@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.Farm_ycjk_yjclpzMapper">
+	<resultMap id="Farm_ycjk_yjclpz" type="com.framing.pojo.Farm_ycjk_yjclpz">
+		<result property="sid" column="sid" />
+		<result property="yjclmc" column="yjclmc" />
+		<result property="yjdj" column="yjdj" />
+		<result property="zysj" column="zysj" />
+	</resultMap>
+	
+	<!-- Farm_ycjk_yjclpz  字段 -->
+	<sql id="columns_Farm_ycjk_yjclpz">
+		sid as "sid",
+		yjclmc as "yjclmc",
+		yjdj as "yjdj",
+		zysj as "zysj"
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertFarm_ycjk_yjclpz">
+	    (
+			sid ,
+			yjclmc ,
+			yjdj ,
+			zysj
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_Farm_ycjk_yjclpzParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{yjclmc,jdbcType=VARCHAR} ,
+			#{yjdj,jdbcType=INTEGER} ,
+			#{zysj,jdbcType=VARCHAR}
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Farm_ycjk_yjclpz_update">
+			sid = #{sid,jdbcType=INTEGER} ,
+			yjclmc = #{yjclmc,jdbcType=VARCHAR} ,
+			yjdj = #{yjdj,jdbcType=INTEGER} ,
+			zysj = #{zysj,jdbcType=VARCHAR}
+	</sql>
+	<!-- Farm_ycjk_yjclpz 查询(包括条件按查询) -->
+	<sql id="Farm_ycjk_yjclpz_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="yjclmc != null and yjclmc != ''">
+	 			and yjclmc LIKE CONCAT('%',#{yjclmc},'%')
+	 		</if>
+	 		<if test="yjdj != null and yjdj != ''">
+	 			and yjdj = #{yjdj}
+	 		</if>
+			<if test="zysj != null and zysj != ''">
+	 			and zysj = #{zysj}
+	 		</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+
+	<select id="findAll" resultType="com.framing.pojo.Farm_ycjk_yjclpz">
+		select * from farm_ycjk_yjclpz
+	</select>
+	
+	<select id="loginIn" resultType="com.framing.pojo.Farm_ycjk_yjclpz" resultMap="Farm_ycjk_yjclpz">
+			select 
+				<include refid="columns_Farm_ycjk_yjclpz" />
+			 from Farm_ycjk_yjclpz
+			 where yjclmc = #{yjclmc}
+			 and yjdj = #{yjdj}
+			 and zysj = #{zysj}
+	</select>
+
+	<select id="getFarm_ycjk_yjclpz" resultType="com.framing.pojo.Farm_ycjk_yjclpz" resultMap="Farm_ycjk_yjclpz">
+			select 
+				<include refid="columns_Farm_ycjk_yjclpz" />
+			 from Farm_ycjk_yjclpz
+			<where>
+			<include refid="Farm_ycjk_yjclpz_where" />
+		</where>
+	</select>
+	
+	<select id="getOneFarm_ycjk_yjclpz" resultType="com.framing.pojo.Farm_ycjk_yjclpz"
+		resultMap="Farm_ycjk_yjclpz" parameterType="integer">
+			select 
+			<include refid="columns_Farm_ycjk_yjclpz" />
+			 from Farm_ycjk_yjclpz
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addFarm_ycjk_yjclpz" parameterType="com.framing.pojo.Farm_ycjk_yjclpz">
+		INSERT INTO Farm_ycjk_yjclpz <include refid="columns_insertFarm_ycjk_yjclpz"/>
+		VALUES <include refid="columns_Farm_ycjk_yjclpzParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateFarm_ycjk_yjclpz" parameterType="com.framing.pojo.Farm_ycjk_yjclpz">
+		<!-- UPDATE Farm_ycjk_yjclpz
+		SET    <include refid="Farm_ycjk_yjclpz_update" />
+		WHERE  sid=#{sid} -->
+		update Farm_ycjk_yjclpz
+		<set>
+			<if test="yjclmc !=null and yjclmc!='' ">
+				yjclmc=#{yjclmc},
+			</if>
+			<if test="yjdj !=null and yjdj !='' ">
+				yjdj=#{yjdj},
+			</if>
+			<if test="zysj !=null and zysj !='' ">
+				zysj=#{zysj}
+			</if>
+
+		</set>
+		where sid = #{sid}
+	</update>
+	
+	<delete id="deleteFarm_ycjk_yjclpz" parameterType="integer">
+			delete  from Farm_ycjk_yjclpz where sid=#{0}
+	</delete>
+</mapper> 

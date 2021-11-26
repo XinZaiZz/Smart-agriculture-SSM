@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.Farm_ycjk_ssjkMapper">
+	<resultMap id="farm_ycjk_ssjk" type="com.framing.pojo.Farm_ycjk_ssjk">
+		<result property="sid" column="sid" />
+		<result property="kqwd" column="kqwd" />
+		<result property="kqsd" column="kqsd" />
+		<result property="kqwd_bjzt" column="kqwd_bjzt" />
+		<result property="is_tfj_1" column="is_tfj_1" />
+		<result property="is_nfj_1" column="is_nfj_1" />
+		<result property="is_nfj_2" column="is_nfj_2" />
+		<result property="is_bgd_1" column="is_bgd_1" />
+		<result property="is_bgd_2" column="is_bgd_2" />
+		<result property="is_bgd_3" column="is_bgd_3" />
+		<result property="is_tc_1" column="is_tc_1" />
+		<result property="is_tc_2" column="is_tc_2" />
+		<result property="is_cc_1" column="is_cc_1" />
+		<result property="is_cl_1" column="is_cl_1" />
+		<result property="is_js" column="is_js" />
+		<result property="is_gg" column="is_gg" />
+	</resultMap>
+	
+	<!-- farm_ycjk_ssjk  字段 -->
+	<sql id="columns_Farm_ycjk_ssjk">
+		sid as "sid",
+		kqwd as "kqwd",
+		kqsd as "kqsd",
+		kqwd_bjzt as "kqwd_bjzt",
+		is_tfj_1 as "is_tfj_1" ,
+		is_nfj_1 as "is_nfj_1" ,
+		is_nfj_2 as "is_nfj_2" ,
+		is_bgd_1 as "is_bgd_1" ,
+		is_bgd_2 as "is_bgd_2" ,
+		is_bgd_3 as "is_bgd_3" ,
+		is_tc_1 as "is_tc_1" ,
+		is_tc_2 as "is_tc_2" ,
+		is_cc_1 as "is_cc_1" ,
+		is_cl_1 as "is_cl_1" ,
+		is_js as "is_js" ,
+		is_gg as "is_gg"
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertFarm_ycjk_ssjk">
+	    (
+			sid ,
+			kqwd ,
+	        kqsd ,
+			kqwd_bjzt ,
+			is_tfj_1 ,
+			is_nfj_1 ,
+			is_nfj_2 ,
+			is_bgd_1 ,
+			is_bgd_2 ,
+			is_bgd_3 ,
+			is_tc_1 ,
+			is_tc_2 ,
+			is_cc_1 ,
+			is_cl_1 ,
+			is_js ,
+			is_gg
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_Farm_ycjk_ssjkParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{kqwd,jdbcType=INTEGER} ,
+			#{kqsd,jdbcType=DOUBLE} ,
+			#{kqwd_bjzt,jdbcType=INTEGER} ,
+			#{is_tfj_1,jdbcType=INTEGER} ,
+			#{is_nfj_1,jdbcType=INTEGER} ,
+			#{is_nfj_2,jdbcType=INTEGER} ,
+			#{is_bgd_1,jdbcType=INTEGER} ,
+			#{is_bgd_2,jdbcType=INTEGER} ,
+			#{is_bgd_3,jdbcType=INTEGER} ,
+			#{is_tc_1,jdbcType=INTEGER} ,
+			#{is_tc_2,jdbcType=INTEGER} ,
+			#{is_cc_1,jdbcType=INTEGER} ,
+			#{is_cl_1,jdbcType=INTEGER} ,
+			#{is_js,jdbcType=INTEGER} ,
+			#{is_gg,jdbcType=INTEGER}
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Farm_ycjk_ssjk_update">
+			sid = #{sid,jdbcType=INTEGER} ,
+			kqwd = #{kqwd,jdbcType=INTEGER} ,
+			kqsd = #{kqsd,jdbcType=DOUBLE} ,
+			kqwd_bjzt = #{kqwd_bjzt,jdbcType=INTEGER} ,
+			is_tfj_1 = #{is_tfj_1,jdbcType=INTEGER} ,
+			is_nfj_1 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_nfj_2 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_bgd_1 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_bgd_2 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_bgd_3 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_tc_1 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_tc_2 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_cc_1 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_cl_1 = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_js = #{is_nfj_1,jdbcType=INTEGER} ,
+			is_gg = #{is_nfj_1,jdbcType=INTEGER}
+	</sql>
+	<!-- farm_ycjk_ssjk 查询(包括条件按查询) -->
+	<sql id="Farm_ycjk_ssjk_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="kqwd != null and kqwd != ''">
+	 			and kqwd LIKE CONCAT('%',#{kqwd},'%')
+	 		</if>
+			<if test="kqsd != null and kqsd != ''">
+				and kqsd LIKE CONCAT('%',#{kqsd},'%')
+			</if>
+	 		<if test="kqwd_bjzt != null and kqwd_bjzt != ''">
+	 			and kqwd_bjzt = #{kqwd_bjzt}
+	 		</if>
+			<if test="is_tfj_1 != null and is_tfj_1 != ''">
+	 			and is_tfj_1 = #{is_tfj_1}
+	 		</if>
+			<if test="is_nfj_1 != null and is_nfj_1 != ''">
+	 			and is_nfj_1 = #{is_nfj_1}
+	 		</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+	
+	<select id="loginIn" resultType="com.framing.pojo.Farm_ycjk_ssjk" resultMap="farm_ycjk_ssjk">
+			select 
+				<include refid="columns_Farm_ycjk_ssjk" />
+			 from farm_ycjk_ssjk
+			 where kqwd = #{kqwd} 
+			 and kqsd = #{kqsd}
+			 and kqwd_bjzt = #{kqwd_bjzt}
+			 and is_tfj_1 = #{is_tfj_1}
+			 and is_nfj_1 = #{is_nfj_1}
+			 and is_nfj_2 = #{is_nfj_2}
+			 and is_bgd_1 = #{is_bgd_1}
+			 and is_bgd_2 = #{is_bgd_2}
+			 and is_bgd_3 = #{is_bgd_3}
+			 and is_tc_1 = #{is_tc_1}
+			 and is_tc_2 = #{is_tc_2}
+			 and is_cc_1 = #{is_cc_1}
+			 and is_cl_1 = #{is_cl_1}
+			 and is_js = #{is_js}
+			 and is_gg = #{is_gg}
+	</select>
+
+	<select id="getFarm_ycjk_ssjk" resultType="com.framing.pojo.Farm_ycjk_ssjk" resultMap="farm_ycjk_ssjk">
+			select 
+				<include refid="columns_Farm_ycjk_ssjk" />
+			 from farm_ycjk_ssjk
+			<where>
+			<include refid="Farm_ycjk_ssjk_where" />
+		</where>
+	</select>
+	
+	<select id="getOneFarm_ycjk_ssjk" resultType="com.framing.pojo.Farm_ycjk_ssjk"
+		resultMap="farm_ycjk_ssjk" parameterType="integer">
+			select 
+			<include refid="columns_Farm_ycjk_ssjk" />
+			 from farm_ycjk_ssjk
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addFarm_ycjk_ssjk" parameterType="com.framing.pojo.Farm_ycjk_ssjk">
+		INSERT INTO farm_ycjk_ssjk <include refid="columns_insertFarm_ycjk_ssjk"/>
+		VALUES <include refid="columns_Farm_ycjk_ssjkParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateFarm_ycjk_ssjk" parameterType="com.framing.pojo.Farm_ycjk_ssjk">
+		<!-- UPDATE farm_ycjk_ssjk
+		SET    <include refid="Farm_ycjk_ssjk_update" />
+		WHERE  sid=#{sid} -->
+		update farm_ycjk_ssjk
+		<set>
+			<if test="kqwd !=null and kqwd!='' ">
+				kqwd=#{kqwd},
+			</if>
+			<if test="kqsd !=null and kqsd!='' ">
+				kqsd=#{kqsd},
+			</if>
+			<if test="kqwd_bjzt !=null and kqwd_bjzt !='' ">
+				kqwd_bjzt=#{kqwd_bjzt},
+			</if>
+			<if test="is_tfj_1 !=null and is_tfj_1 !='' ">
+				is_tfj_1=#{is_tfj_1}
+			</if>
+			<if test="is_nfj_1 !=null and is_nfj_1 !='' ">
+				is_nfj_1=#{is_nfj_1}
+			</if>
+			<if test="is_nfj_2 !=null and is_nfj_2 !='' ">
+				is_nfj_2=#{is_nfj_2}
+			</if>
+			<if test="is_bgd_1 !=null and is_bgd_1 !='' ">
+				is_bgd_1=#{is_bgd_1}
+			</if>
+			<if test="is_bgd_2 !=null and is_bgd_2 !='' ">
+				is_bgd_2=#{is_bgd_2}
+			</if>
+			<if test="is_bgd_3 !=null and is_bgd_3 !='' ">
+				is_bgd_3=#{is_bgd_3}
+			</if>
+			<if test="is_tc_1 !=null and is_tc_1 !='' ">
+				is_tc_1=#{is_tc_1}
+			</if>
+			<if test="is_tc_2 !=null and is_tc_2 !='' ">
+				is_tc_2=#{is_tc_2}
+			</if>
+			<if test="is_cc_1 !=null and is_cc_1 !='' ">
+				is_cc_1=#{is_cc_1}
+			</if>
+			<if test="is_cl_1 !=null and is_cl_1 !='' ">
+				is_cl_1=#{is_cl_1}
+			</if>
+			<if test="is_js !=null and is_js !='' ">
+				is_js=#{is_js}
+			</if>
+			<if test="is_gg !=null and is_gg !='' ">
+				is_gg=#{is_gg}
+			</if>
+		</set>
+		where sid = #{sid}
+	</update>
+	
+	<delete id="deleteFarm_ycjk_ssjk" parameterType="integer">
+			delete  from farm_ycjk_ssjk where sid=#{0}
+	</delete>
+</mapper> 

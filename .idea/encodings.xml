@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/images/scgcgz/ticon.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/images/scgcgz/ticonl.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/images/scgcgz/ttit.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/images/scgl_ssjk/d011.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/images/scgl_ssjk/d012.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/images/scgl_ssjk/d013.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/echarts.min.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/plugins/ueditor" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

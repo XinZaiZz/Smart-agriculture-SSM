@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.UserInfoMapper">
+	<resultMap id="userInfo" type="com.framing.pojo.UserInfo">
+		<result property="sid" column="sid" />
+		<result property="name" column="name" />
+		<result property="roleid" column="roleid" />
+	</resultMap>
+	
+	<!-- user_info  字段 -->
+	<sql id="columns_UserInfo">
+		sid as "sid",
+		name as "name",
+		roleid as "roleid",
+		username as "username",
+		password as "password",
+		CREATED as "created" ,
+		CREATED_BY as "createdBy" ,
+		LAST_UPDATED as "lastUpdated" ,
+		LAST_UPDATED_BY as "lastUpdatedBy"  
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertUserInfo">
+	    (
+			sid ,
+			name ,
+			roleid ,
+			username,
+			password,
+			CREATED ,
+			CREATED_BY ,
+			LAST_UPDATED ,
+			LAST_UPDATED_BY 
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_UserInfoParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{name,jdbcType=VARCHAR} ,
+			#{roleid,jdbcType=INTEGER} ,
+			#{username,jdbcType=VARCHAR} ,
+			#{password,jdbcType=VARCHAR} ,
+			#{created,jdbcType=TIMESTAMP} ,
+			#{createdBy,jdbcType=VARCHAR} ,
+			#{lastUpdated,jdbcType=TIMESTAMP} ,
+			#{lastUpdatedBy,jdbcType=VARCHAR} 
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="UserInfo_update">
+			SID = #{sid,jdbcType=INTEGER} ,
+			name = #{name,jdbcType=VARCHAR} ,
+			roleid = #{roleid,jdbcType=INTEGER} ,
+			username = #{username,jdbcType=VARCHAR} ,
+			password = #{password,jdbcType=VARCHAR} ,
+			CREATED = #{created,jdbcType=TIMESTAMP} ,
+			CREATED_BY = #{createdBy,jdbcType=VARCHAR} ,
+			LAST_UPDATED = #{lastUpdated,jdbcType=TIMESTAMP} ,
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=VARCHAR} 
+	</sql>
+	<!-- user_info 查询(包括条件按查询) -->
+	<sql id="UserInfo_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="name != null and name != ''">
+	 			and name LIKE CONCAT('%',#{name},'%')
+	 		</if>
+	 		<if test="roleid != null and roleid != ''">
+	 			and roleid = #{roleid}
+	 		</if>
+	 		<if test="username != null and username != ''">
+	 			and username = #{username}
+	 		</if>
+	 		<if test="password != null and password != ''">
+	 			and password = #{password}
+	 		</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+	
+	<select id="loginIn" resultType="com.framing.pojo.UserInfo" resultMap="userInfo">
+			select 
+				<include refid="columns_UserInfo" />
+			 from user_info
+			 where username = #{username} 
+			 and password = #{password} 
+	</select>
+
+	<select id="getUserInfo" resultType="com.framing.pojo.UserInfo" resultMap="userInfo">
+			select 
+				<include refid="columns_UserInfo" />
+			 from user_info
+			<where>
+			<include refid="UserInfo_where" />
+		</where>
+	</select>
+	
+	<select id="getOneUserInfo" resultType="com.framing.pojo.UserInfo"
+		resultMap="userInfo" parameterType="integer">
+			select 
+			<include refid="columns_UserInfo" />
+			 from user_info
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addUserInfo" parameterType="com.framing.pojo.UserInfo">
+		INSERT INTO user_info <include refid="columns_insertUserInfo"/>
+		VALUES <include refid="columns_UserInfoParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateUserInfo" parameterType="com.framing.pojo.UserInfo">
+		UPDATE user_info
+		SET    <include refid="UserInfo_update" />
+		WHERE  SID=#{sid}
+	</update>
+	
+	<delete id="deleteUserInfo" parameterType="integer">
+			delete  from user_info where sid=#{0}
+	</delete>
+</mapper> 

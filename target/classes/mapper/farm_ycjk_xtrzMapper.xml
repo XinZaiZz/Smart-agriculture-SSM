@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.Farm_ycjk_xtrzMapper">
+	<resultMap id="Farm_ycjk_xtrz" type="com.framing.pojo.Farm_ycjk_xtrz">
+		<result property="sid" column="sid" />
+		<result property="rzlx" column="rzlx" />
+		<result property="rznr" column="rznr" />
+		<result property="jlsj" column="jlsj" />
+		<result property="czry" column="czry" />
+	</resultMap>
+	
+	<!-- Farm_ycjk_xtrz  字段 -->
+	<sql id="columns_Farm_ycjk_xtrz">
+		sid as "sid",
+		rzlx as "rzlx",
+		rznr as "rznr",
+		jlsj as "jlsj" ,
+		czry as "czry"
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertFarm_ycjk_xtrz">
+	    (
+			sid ,
+			rzlx ,
+			rznr ,
+			jlsj ,
+			czry
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_Farm_ycjk_xtrzParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{rzlx,jdbcType=VARCHAR} ,
+			#{rznr,jdbcType=VARCHAR} ,
+			#{jlsj,jdbcType=VARCHAR} ,
+			#{czry,jdbcType=VARCHAR}
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Farm_ycjk_xtrz_update">
+			sid = #{sid,jdbcType=INTEGER} ,
+			rzlx = #{rzlx,jdbcType=VARCHAR} ,
+			rznr = #{rznr,jdbcType=VARCHAR} ,
+			jlsj = #{czry,jdbcType=VARCHAR} ,
+			czry = #{czry,jdbcType=VARCHAR}
+	</sql>
+	<!-- Farm_ycjk_xtrz 查询(包括条件按查询) -->
+	<sql id="Farm_ycjk_xtrz_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="rzlx != null and rzlx != ''">
+	 			and rzlx LIKE CONCAT('%',#{rzlx},'%')
+	 		</if>
+	 		<if test="rznr != null and rznr != ''">
+	 			and rznr = #{rznr}
+	 		</if>
+			<if test="jlsj != null and jlsj != ''">
+	 			and jlsj = #{jlsj}
+	 		</if>
+			<if test="czry != null and czry != ''">
+	 			and czry = #{czry}
+	 		</if>
+			<if test="startDate != null and startDate != ''">
+			and jlsj &gt;= #{startDate}
+			</if>
+			<if test="endDate != null and endDate != ''">
+			and jlsj &lt;= #{endDate}
+			</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+
+	<select id="findAll" resultType="com.framing.pojo.Farm_ycjk_xtrz">
+		select * from farm_ycjk_xtrz
+	</select>
+	
+	<select id="loginIn" resultType="com.framing.pojo.Farm_ycjk_xtrz" resultMap="Farm_ycjk_xtrz">
+			select 
+				<include refid="columns_Farm_ycjk_xtrz" />
+			 from Farm_ycjk_xtrz
+			 where rzlx = #{rzlx}
+			 and rznr = #{rznr}
+			 and jlsj = #{jlsj}
+			 and czry = #{czry}
+	</select>
+
+	<select id="getFarm_ycjk_xtrz" resultType="com.framing.pojo.Farm_ycjk_xtrz" resultMap="Farm_ycjk_xtrz">
+			select 
+				<include refid="columns_Farm_ycjk_xtrz" />
+			 from Farm_ycjk_xtrz
+			<where>
+			<include refid="Farm_ycjk_xtrz_where" />
+
+		</where>
+		order by jlsj desc
+	</select>
+	
+	<select id="getOneFarm_ycjk_xtrz" resultType="com.framing.pojo.Farm_ycjk_xtrz"
+		resultMap="Farm_ycjk_xtrz" parameterType="integer">
+			select 
+			<include refid="columns_Farm_ycjk_xtrz" />
+			 from Farm_ycjk_xtrz
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addFarm_ycjk_xtrz" parameterType="com.framing.pojo.Farm_ycjk_xtrz">
+		INSERT INTO Farm_ycjk_xtrz <include refid="columns_insertFarm_ycjk_xtrz"/>
+		VALUES <include refid="columns_Farm_ycjk_xtrzParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateFarm_ycjk_xtrz" parameterType="com.framing.pojo.Farm_ycjk_xtrz">
+		<!-- UPDATE Farm_ycjk_xtrz
+		SET    <include refid="Farm_ycjk_xtrz_update" />
+		WHERE  sid=#{sid} -->
+		update Farm_ycjk_xtrz
+		<set>
+			<if test="rzlx !=null and rzlx!='' ">
+				rzlx=#{rzlx},
+			</if>
+			<if test="rznr !=null and rznr !='' ">
+				rznr=#{rznr},
+			</if>
+			<if test="jlsj !=null and jlsj !='' ">
+				jlsj=#{jlsj},
+			</if>
+			<if test="czry !=null and czry !='' ">
+				czry=#{czry}
+			</if>
+
+		</set>
+		where sid = #{sid}
+	</update>
+	
+	<delete id="deleteFarm_ycjk_xtrz" parameterType="integer">
+			delete  from Farm_ycjk_xtrz where sid=#{0}
+	</delete>
+</mapper> 

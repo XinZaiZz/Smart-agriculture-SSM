@@ -1,0 +1,87 @@
+/*.container-fluid{
+	background: #FFF6EE;
+}*/
+#img_box{
+	position: relative;
+	/*margin-top: 50px;*/
+	margin-left: 100px;
+	padding: 0px 30px;
+}
+#img_box .container{
+	width: 100%;
+}
+#login_box{
+	/*height: 300px;*/
+	padding-top: 50px;
+	margin: 0px auto;
+	margin-top: 30px;
+	border: 1px #8C8C8C solid;
+	border-radius: 10px;
+}
+#tijiao{
+	font-size: 18px;
+	font-weight: normal;
+	font-family: inherit;
+	color: white;
+	width: 200px;
+	height: 40px;
+	background-color: #4CAE4C;
+}
+
+.form-control{
+	font-size: 16px;
+	font-weight: normal;
+	height: 50px;
+}
+#bottom_web{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+label.error{
+	display: none;
+	color: red;
+}
+#shouye{
+	text-align: right;
+	font-size: 16px;
+	position: relative;
+}
+#shouye #fangwen{
+	color: #4CAE4C;
+}
+#shouye #fangwen:hover{
+	text-decoration: none;
+	color: yellowgreen;
+}
+
+#shouye img{
+	position: relative;
+	top: -3px;
+	width: 20px;
+	height: 20px;
+}
+#scroll{
+	display: block;
+	width:50px;
+	height:50px;
+	background: yellowgreen;
+	border:2px solid 3487ff;
+	border-radius:50%;
+	font-size:28px;
+	font-weight:bold;
+	text-align:center;
+	line-height:50px;
+	/*增加过渡*/
+	transition:all 4s;
+}
+
+#scroll:hover,div.hover{
+	transform:translate(800px) rotate(1080deg);
+}
+#content{
+	width: 1000px;
+	margin: 50px auto;
+	padding: 0px 30px;
+}
+

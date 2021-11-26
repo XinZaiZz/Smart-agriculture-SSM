@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.Farm_ycjk_czjlcxMapper">
+	<resultMap id="Farm_ycjk_czjlcx" type="com.framing.pojo.Farm_ycjk_czjlcx">
+		<result property="sid" column="sid" />
+		<result property="sbmc" column="sbmc" />
+		<result property="czzl" column="czzl" />
+		<result property="clzt" column="clzt" />
+		<result property="clsj" column="clsj" />
+		<result property="bz" column="bz" />
+		<result property="czym" column="czym" />
+	</resultMap>
+	
+	<!-- Farm_ycjk_czjlcx  字段 -->
+	<sql id="columns_Farm_ycjk_czjlcx">
+		sid as "sid",
+		sbmc as "sbmc",
+		czzl as "czzl",
+		clzt as "clzt" ,
+		clsj as "clsj" ,
+		bz as "bz" ,
+		czym as "czym"
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertFarm_ycjk_czjlcx">
+	    (
+			sid ,
+			sbmc ,
+			czzl ,
+			clzt ,
+			clsj ,
+			bz ,
+			czym
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_Farm_ycjk_czjlcxParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{sbmc,jdbcType=VARCHAR} ,
+			#{czzl,jdbcType=VARCHAR} ,
+			#{clzt,jdbcType=INTEGER} ,
+			#{clsj,jdbcType=VARCHAR} ,
+			#{bz,jdbcType=VARCHAR} ,
+			#{czym,jdbcType=VARCHAR}
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Farm_ycjk_czjlcx_update">
+			sid = #{sid,jdbcType=INTEGER} ,
+			sbmc = #{sbmc,jdbcType=VARCHAR} ,
+			czzl = #{czzl,jdbcType=VARCHAR} ,
+			clzt = #{clzt,jdbcType=INTEGER} ,
+			clsj = #{clsj,jdbcType=VARCHAR} ,
+			bz = #{clsj,jdbcType=VARCHAR} ,
+			czym = #{clsj,jdbcType=VARCHAR}
+	</sql>
+	<!-- Farm_ycjk_czjlcx 查询(包括条件按查询) -->
+	<sql id="Farm_ycjk_czjlcx_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="sbmc != null and sbmc != ''">
+	 			and sbmc LIKE CONCAT('%',#{sbmc},'%')
+	 		</if>
+	 		<if test="czzl != null and czzl != ''">
+	 			and czzl = #{czzl}
+	 		</if>
+			<if test="clzt != null and clzt != ''">
+	 			and clzt = #{clzt}
+	 		</if>
+			<if test="clsj != null and clsj != ''">
+	 			and clsj = #{clsj}
+	 		</if>
+			<if test="bz != null and bz != ''">
+	 			and bz = #{bz}
+	 		</if>
+			<if test="czym != null and czym != ''">
+	 			and czym = #{czym}
+	 		</if>
+			<if test="startDate != null and startDate != ''">
+				and clsj &gt;= #{startDate}
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and clsj &lt;= #{endDate}
+			</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+
+	<select id="findAll" resultType="com.framing.pojo.Farm_ycjk_czjlcx">
+		select * from farm_ycjk_czjlcx
+	</select>
+	
+	<select id="loginIn" resultType="com.framing.pojo.Farm_ycjk_czjlcx" resultMap="Farm_ycjk_czjlcx">
+			select 
+				<include refid="columns_Farm_ycjk_czjlcx" />
+			 from Farm_ycjk_czjlcx
+			 where sbmc = #{sbmc}
+			 and czzl = #{czzl}
+			 and clzt = #{clzt}
+			 and clsj = #{clsj}
+			 and bz = #{bz}
+			 and czym = #{czym}
+	</select>
+
+	<select id="getFarm_ycjk_czjlcx" resultType="com.framing.pojo.Farm_ycjk_czjlcx" resultMap="Farm_ycjk_czjlcx">
+			select 
+				<include refid="columns_Farm_ycjk_czjlcx" />
+			 from Farm_ycjk_czjlcx
+			<where>
+			<include refid="Farm_ycjk_czjlcx_where" />
+		</where>
+	</select>
+	
+	<select id="getOneFarm_ycjk_czjlcx" resultType="com.framing.pojo.Farm_ycjk_czjlcx"
+		resultMap="Farm_ycjk_czjlcx" parameterType="integer">
+			select 
+			<include refid="columns_Farm_ycjk_czjlcx" />
+			 from Farm_ycjk_czjlcx
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addFarm_ycjk_czjlcx" parameterType="com.framing.pojo.Farm_ycjk_czjlcx">
+		INSERT INTO Farm_ycjk_czjlcx <include refid="columns_insertFarm_ycjk_czjlcx"/>
+		VALUES <include refid="columns_Farm_ycjk_czjlcxParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateFarm_ycjk_czjlcx" parameterType="com.framing.pojo.Farm_ycjk_czjlcx">
+		<!-- UPDATE Farm_ycjk_czjlcx
+		SET    <include refid="Farm_ycjk_czjlcx_update" />
+		WHERE  sid=#{sid} -->
+		update Farm_ycjk_czjlcx
+		<set>
+			<if test="sbmc !=null and sbmc!='' ">
+				sbmc=#{sbmc},
+			</if>
+			<if test="czzl !=null and czzl !='' ">
+				czzl=#{czzl},
+			</if>
+			<if test="clzt !=null and clzt !='' ">
+				clzt=#{clzt}
+			</if>
+			<if test="clsj !=null and clsj !='' ">
+				clsj=#{clsj}
+			</if>
+			<if test="bz !=null and bz !='' ">
+				bz=#{bz}
+			</if>
+			<if test="czym !=null and czym !='' ">
+				czym=#{czym}
+			</if>
+		</set>
+		where sid = #{sid}
+	</update>
+	
+	<delete id="deleteFarm_ycjk_czjlcx" parameterType="integer">
+			delete  from Farm_ycjk_czjlcx where sid=#{0}
+	</delete>
+</mapper> 

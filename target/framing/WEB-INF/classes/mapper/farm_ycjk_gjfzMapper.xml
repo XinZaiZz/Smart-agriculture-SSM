@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.Farm_ycjk_gjfzMapper">
+	<resultMap id="farm_ycjk_gjfz" type="com.framing.pojo.Farm_ycjk_gjfz">
+		<result property="sid" column="sid" />
+		<result property="kqwd_max" column="kqwd_max" />
+		<result property="kqwd_min" column="kqwd_min" />
+		<result property="kqsd_max" column="kqsd_max" />
+		<result property="kqsd_min" column="kqsd_min" />
+		<result property="co2_max" column="co2_max" />
+		<result property="co2_min" column="co2_min" />
+		<result property="gzqd_max" column="gzqd_max" />
+		<result property="gzqd_min" column="gzqd_min" />
+	</resultMap>
+	
+	<!-- farm_ycjk_gjfz  字段 -->
+	<sql id="columns_Farm_ycjk_gjfz">
+		sid as "sid",
+		kqwd_max as "kqwd_max",
+		kqwd_min as "kqwd_min",
+		kqsd_max as "kqsd_max",
+		kqsd_min as "kqsd_min" ,
+		co2_max as "co2_max" ,
+		co2_min as "co2_min" ,
+		gzqd_max as "gzqd_max" ,
+		gzqd_min as "gzqd_min"
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertFarm_ycjk_gjfz">
+	    (
+			sid ,
+			kqwd_max ,
+	        kqwd_min ,
+			kqsd_max ,
+			kqsd_min ,
+			co2_max ,
+			co2_min ,
+			gzqd_max ,
+			gzqd_min
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_Farm_ycjk_gjfzParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{kqwd_max,jdbcType=FLOAT} ,
+			#{kqwd_min,jdbcType=FLOAT} ,
+			#{kqsd_max,jdbcType=FLOAT} ,
+			#{kqsd_min,jdbcType=FLOAT} ,
+			#{co2_max,jdbcType=FLOAT} ,
+			#{co2_min,jdbcType=FLOAT} ,
+			#{gzqd_max,jdbcType=FLOAT} ,
+			#{gzqd_min,jdbcType=FLOAT}
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Farm_ycjk_gjfz_update">
+			sid = #{sid,jdbcType=INTEGER} ,
+			kqwd_max = #{kqwd_max,jdbcType=FLOAT} ,
+			kqwd_min = #{kqwd_min,jdbcType=FLOAT} ,
+			kqsd_max = #{kqsd_max,jdbcType=FLOAT} ,
+			kqsd_min = #{kqsd_min,jdbcType=FLOAT} ,
+			co2_max = #{co2_max,jdbcType=FLOAT} ,
+			co2_min = #{co2_min,jdbcType=FLOAT} ,
+			gzqd_max = #{gzqd_max,jdbcType=FLOAT} ,
+			gzqd_min = #{gzqd_min,jdbcType=FLOAT}
+	</sql>
+	<!-- farm_ycjk_gjfz 查询(包括条件按查询) -->
+	<sql id="Farm_ycjk_gjfz_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="kqwd_max != null and kqwd_max != ''">
+	 			and kqwd_max LIKE CONCAT('%',#{kqwd_max},'%')
+	 		</if>
+			<if test="kqwd_min != null and kqwd_min != ''">
+				and kqwd_min LIKE CONCAT('%',#{kqwd_min},'%')
+			</if>
+	 		<if test="kqsd_max != null and kqsd_max != ''">
+	 			and kqsd_max = #{kqsd_max}
+	 		</if>
+			<if test="kqsd_min != null and kqsd_min != ''">
+	 			and kqsd_min = #{kqsd_min}
+	 		</if>
+			<if test="co2_max != null and co2_max != ''">
+	 			and co2_max = #{co2_max}
+	 		</if>
+			<if test="co2_max != null and co2_max != ''">
+	 			and co2_min = #{co2_min}
+	 		</if>
+			<if test="co2_max != null and co2_max != ''">
+	 			and gzqd_max = #{gzqd_max}
+	 		</if>
+			<if test="co2_max != null and co2_max != ''">
+	 			and gzqd_min = #{gzqd_min}
+	 		</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+	
+	<select id="loginIn" resultType="com.framing.pojo.Farm_ycjk_gjfz" resultMap="farm_ycjk_gjfz">
+			select 
+				<include refid="columns_Farm_ycjk_gjfz" />
+			 from farm_ycjk_gjfz
+			 where kqwd_max = #{kqwd_max} 
+			 and kqwd_min = #{kqwd_min}
+			 and kqsd_max = #{kqsd_max}
+			 and kqsd_min = #{kqsd_min}
+			 and co2_max = #{co2_max}
+			 and co2_min = #{co2_min}
+			 and gzqd_max = #{gzqd_max}
+			 and gzqd_min = #{gzqd_min}
+	</select>
+
+	<select id="getFarm_ycjk_gjfz" resultType="com.framing.pojo.Farm_ycjk_gjfz" resultMap="farm_ycjk_gjfz">
+			select 
+				<include refid="columns_Farm_ycjk_gjfz" />
+			 from farm_ycjk_gjfz
+			<where>
+			<include refid="Farm_ycjk_gjfz_where" />
+		</where>
+	</select>
+	
+	<select id="getOneFarm_ycjk_gjfz" resultType="com.framing.pojo.Farm_ycjk_gjfz"
+		resultMap="farm_ycjk_gjfz" parameterType="integer">
+			select 
+			<include refid="columns_Farm_ycjk_gjfz" />
+			 from farm_ycjk_gjfz
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addFarm_ycjk_gjfz" parameterType="com.framing.pojo.Farm_ycjk_gjfz">
+		INSERT INTO farm_ycjk_gjfz <include refid="columns_insertFarm_ycjk_gjfz"/>
+		VALUES <include refid="columns_Farm_ycjk_gjfzParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateFarm_ycjk_gjfz" parameterType="com.framing.pojo.Farm_ycjk_gjfz">
+		<!-- UPDATE farm_ycjk_gjfz
+		SET    <include refid="Farm_ycjk_gjfz_update" />
+		WHERE  sid=#{sid} -->
+		update farm_ycjk_gjfz
+		<set>
+			<if test="kqwd_max !=null and kqwd_max!='' ">
+				kqwd_max=#{kqwd_max},
+			</if>
+			<if test="kqwd_min !=null and kqwd_min!='' ">
+				kqwd_min=#{kqwd_min},
+			</if>
+			<if test="kqsd_max !=null and kqsd_max !='' ">
+				kqsd_max=#{kqsd_max},
+			</if>
+			<if test="kqsd_min !=null and kqsd_min !='' ">
+				kqsd_min=#{kqsd_min},
+			</if>
+			<if test="co2_max !=null and co2_max !='' ">
+				co2_max=#{co2_max},
+			</if>
+			<if test="co2_min !=null and co2_min !='' ">
+				co2_min=#{co2_min},
+			</if>
+			<if test="gzqd_max !=null and gzqd_max !='' ">
+				gzqd_max=#{gzqd_max},
+			</if>
+			<if test="gzqd_min !=null and gzqd_min !='' ">
+				gzqd_min=#{gzqd_min}
+			</if>
+		</set>
+		where sid = #{sid}
+	</update>
+	
+	<delete id="deleteFarm_ycjk_gjfz" parameterType="integer">
+			delete  from farm_ycjk_gjfz where sid=#{0}
+	</delete>
+</mapper> 

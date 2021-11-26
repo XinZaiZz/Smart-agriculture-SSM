@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.RoleMapper">
+	<resultMap id="role" type="com.framing.pojo.Role">
+		<result property="sid" column="sid" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+	</resultMap>
+	
+	<!-- role  字段 -->
+	<sql id="columns_Role">
+		sid as "sid",
+		name as "name",
+		type as "type",
+		CREATED as "created" 
+		
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertRole">
+	    (
+			sid ,
+			name ,
+			type ,
+			CREATED 
+			
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_RoleParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{name,jdbcType=VARCHAR} ,
+			#{type,jdbcType=VARCHAR} ,
+			#{created,jdbcType=TIMESTAMP} 
+			
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Role_update">
+			SID = #{sid,jdbcType=INTEGER} ,
+			name = #{name,jdbcType=VARCHAR} ,
+			type= #{type,jdbcType=VARCHAR} ,
+			CREATED = #{created,jdbcType=TIMESTAMP} 
+		
+	</sql>
+	<!-- role 查询(包括条件按查询) -->
+	<sql id="Role_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="name != null and name != ''">
+	 			and name LIKE CONCAT('%',#{name},'%')
+	 		</if>
+	 		<if test="type != null and type != ''">
+	 			and type = #{type}
+	 		</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+
+	<select id="getRole" resultType="com.framing.pojo.Role" resultMap="role">
+			select 
+				<include refid="columns_Role" />
+			 from role
+			<where>
+			<include refid="Role_where" />
+		</where>
+	</select>
+	
+	<select id="getOneRole" resultType="com.framing.pojo.Role"
+		resultMap="role" parameterType="integer">
+			select 
+			<include refid="columns_Role" />
+			 from role
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addRole" parameterType="com.framing.pojo.Role">
+		INSERT INTO role <include refid="columns_insertRole"/>
+		VALUES <include refid="columns_RoleParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateRole" parameterType="com.framing.pojo.Role">
+		UPDATE role
+		SET    <include refid="Role_update" />
+		WHERE  SID=#{sid}
+	</update>
+	
+	<delete id="deleteRole" parameterType="integer">
+			delete  from role where sid=#{0}
+	</delete>
+</mapper> 

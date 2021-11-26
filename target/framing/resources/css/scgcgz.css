@@ -1,0 +1,90 @@
+.div{
+    background-color: #D3EEE3;
+    height: 100%;
+    overflow: auto;
+}
+.top{
+    width: 640px;
+    height: 56px;
+    margin: 0 auto;
+    background: url(../images/scgcgz/ttit.png);
+}
+.bottom{
+    width: 640px;
+    height: 171px;
+    margin: 0 auto;
+}
+.left{
+    width: 2px;
+    height: 171px;
+    background-color: #1B825F;
+    float: left;
+}
+.right{
+    float: left;
+    margin-left: 50px;
+    width: 570px;
+    height: 171px;
+}
+.right .content{
+    width: 588px;
+    height: 130px;
+    background-color: #fff;
+
+
+}
+.icon1{
+    width: 14px;
+    height: 14px;
+    left: -5.7px;
+    top: 53px;
+    background-image: url(../images/scgcgz/ticon.png);
+    position: relative;
+}
+/* .icon2{
+    width: 14px;
+    height: 14px;
+    left: -5.7px;
+    top: 200px;
+    background-image: url(./img/ticon.png);
+    position: relative;
+}
+.icon3{
+    width: 14px;
+    height: 14px;
+    left: -5.7px;
+    top: 347px;
+    background-image: url(./img/ticon.png);
+    position: relative;
+} */
+.iconContent1{
+    width: 12px;
+    height: 21px;
+    left: -12px;
+    top: 50px;
+    background-image: url(../images/scgcgz/ticonl.png);
+    position: relative;
+}
+/* .iconContent2{
+    width: 12px;
+    height: 21px;
+    left: -12px;
+    top: 50px;
+    background-image: url(./img/ticonl.png);
+    position: relative;
+}
+.iconContent3{
+    width: 12px;
+    height: 21px;
+    left: -12px;
+    top: 50px;
+    background-image: url(./img/ticonl.png);
+    position: relative;
+} */
+.content .time{
+    margin-top: 10px;
+    font-size: 25px;
+}
+.content p{
+    margin: 20px;
+}

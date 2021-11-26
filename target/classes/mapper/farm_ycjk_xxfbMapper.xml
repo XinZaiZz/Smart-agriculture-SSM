@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.Farm_ycjk_xxfbMapper">
+	<resultMap id="Farm_ycjk_xxfb" type="com.framing.pojo.Farm_ycjk_xxfb">
+		<result property="sid" column="sid" />
+		<result property="xxbt" column="xxbt" />
+		<result property="xxnr" column="xxnr" />
+		<result property="bcsj" column="bcsj" />
+	</resultMap>
+	
+	<!-- Farm_ycjk_xxfb  字段 -->
+	<sql id="columns_Farm_ycjk_xxfb">
+		sid as "sid",
+		xxbt as "xxbt",
+		xxnr as "xxnr",
+		bcsj as "bcsj"
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertFarm_ycjk_xxfb">
+	    (
+			sid ,
+			xxbt ,
+			xxnr ,
+			bcsj
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_Farm_ycjk_xxfbParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{xxbt,jdbcType=VARCHAR} ,
+			#{xxnr,jdbcType=VARCHAR} ,
+			#{bcsj,jdbcType=VARCHAR}
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Farm_ycjk_xxfb_update">
+			sid = #{sid,jdbcType=INTEGER} ,
+			xxbt = #{xxbt,jdbcType=VARCHAR} ,
+			xxnr = #{xxnr,jdbcType=VARCHAR} ,
+			bcsj = #{bcsj,jdbcType=VARCHAR}
+	</sql>
+	<!-- Farm_ycjk_xxfb 查询(包括条件按查询) -->
+	<sql id="Farm_ycjk_xxfb_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="xxbt != null and xxbt != ''">
+	 			and xxbt LIKE CONCAT('%',#{xxbt},'%')
+	 		</if>
+	 		<if test="xxnr != null and xxnr != ''">
+	 			and xxnr = #{xxnr}
+	 		</if>
+			<if test="bcsj != null and bcsj != ''">
+	 			and bcsj = #{bcsj}
+	 		</if>
+
+			<!-- 日期查询 -->
+			<!--<if test="startDate != null and startDate != ''">
+				and trqk &gt;= #{startDate}
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and trqk &lt;= #{endDate}
+			</if>-->
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+
+	<select id="findAll" resultType="com.framing.pojo.Farm_ycjk_xxfb">
+		select * from farm_ycjk_xxfb
+	</select>
+	
+	<select id="loginIn" resultType="com.framing.pojo.Farm_ycjk_xxfb" resultMap="Farm_ycjk_xxfb">
+			select 
+				<include refid="columns_Farm_ycjk_xxfb" />
+			 from Farm_ycjk_xxfb
+			 where xxbt = #{xxbt}
+			 and xxnr = #{xxnr}
+			 and bcsj = #{bcsj}
+	</select>
+
+	<select id="getFarm_ycjk_xxfb" resultType="com.framing.pojo.Farm_ycjk_xxfb" resultMap="Farm_ycjk_xxfb">
+			select 
+				<include refid="columns_Farm_ycjk_xxfb" />
+			 from Farm_ycjk_xxfb
+			<where>
+			<include refid="Farm_ycjk_xxfb_where" />
+		</where>
+	</select>
+	
+	<select id="getOneFarm_ycjk_xxfb" resultType="com.framing.pojo.Farm_ycjk_xxfb"
+		resultMap="Farm_ycjk_xxfb" parameterType="integer">
+			select 
+			<include refid="columns_Farm_ycjk_xxfb" />
+			 from Farm_ycjk_xxfb
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addFarm_ycjk_xxfb" parameterType="com.framing.pojo.Farm_ycjk_xxfb">
+		INSERT INTO Farm_ycjk_xxfb <include refid="columns_insertFarm_ycjk_xxfb"/>
+		VALUES <include refid="columns_Farm_ycjk_xxfbParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateFarm_ycjk_xxfb" parameterType="com.framing.pojo.Farm_ycjk_xxfb">
+		<!-- UPDATE Farm_ycjk_xxfb
+		SET    <include refid="Farm_ycjk_xxfb_update" />
+		WHERE  sid=#{sid} -->
+		update Farm_ycjk_xxfb
+		<set>
+			<if test="xxbt !=null and xxbt!='' ">
+				xxbt=#{xxbt},
+			</if>
+			<if test="xxnr !=null and xxnr !='' ">
+				xxnr=#{xxnr},
+			</if>
+			<if test="bcsj !=null and bcsj !='' ">
+				bcsj=#{bcsj}
+			</if>
+		</set>
+		where sid = #{sid}
+	</update>
+	
+	<delete id="deleteFarm_ycjk_xxfb" parameterType="integer">
+			delete  from Farm_ycjk_xxfb where sid=#{0}
+	</delete>
+</mapper> 

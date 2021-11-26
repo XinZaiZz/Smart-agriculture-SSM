@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framing.mapper.Farm_ycjk_scgcMapper">
+	<resultMap id="Farm_ycjk_scgc" type="com.framing.pojo.Farm_ycjk_scgc">
+		<result property="sid" column="sid" />
+		<result property="scgcms" column="scgcms" />
+		<result property="bzxx" column="bzxx" />
+		<result property="czsj" column="czsj" />
+		<result property="czry" column="czry" />
+	</resultMap>
+	
+	<!-- Farm_ycjk_scgc  字段 -->
+	<sql id="columns_Farm_ycjk_scgc">
+		sid as "sid",
+		scgcms as "scgcms",
+		bzxx as "bzxx",
+		czsj as "czsj" ,
+		czry as "czry"
+	</sql>
+	
+	<!-- 新增DOC_BASE_INFO 信息字段 -->
+  	<sql id="columns_insertFarm_ycjk_scgc">
+	    (
+			sid ,
+			scgcms ,
+			bzxx ,
+			czsj ,
+			czry
+	    )
+  	</sql>
+  	
+  	 <!-- 新增DOC_BASE_INFO 传入参数值 -->
+    <sql id="columns_Farm_ycjk_scgcParams">
+	     (
+			#{sid,jdbcType=INTEGER} ,
+			#{scgcms,jdbcType=VARCHAR} ,
+			#{bzxx,jdbcType=VARCHAR} ,
+			#{czsj,jdbcType=VARCHAR} ,
+			#{czry,jdbcType=VARCHAR}
+	     )
+    </sql>
+    
+    <!-- 修改DOC_BASE_INFO属性字段 -->
+	<sql id="Farm_ycjk_scgc_update">
+			sid = #{sid,jdbcType=INTEGER} ,
+			scgcms = #{scgcms,jdbcType=VARCHAR} ,
+			bzxx = #{bzxx,jdbcType=VARCHAR} ,
+			czsj = #{czry,jdbcType=VARCHAR} ,
+			czry = #{czry,jdbcType=VARCHAR}
+	</sql>
+	<!-- Farm_ycjk_scgc 查询(包括条件按查询) -->
+	<sql id="Farm_ycjk_scgc_where">
+	 		<if test="sid != null and sid != ''">
+	 			and sid = #{sid}
+	 		</if>
+	 		<if test="scgcms != null and scgcms != ''">
+	 			and scgcms LIKE CONCAT('%',#{scgcms},'%')
+	 		</if>
+	 		<if test="bzxx != null and bzxx != ''">
+	 			and bzxx = #{bzxx}
+	 		</if>
+			<if test="czsj != null and czsj != ''">
+	 			and czsj = #{czsj}
+	 		</if>
+			<if test="czry != null and czry != ''">
+	 			and czry = #{czry}
+	 		</if>
+	 		<!-- 日期查询 -->
+	 		<!-- <if test="queryDateBegin != null">
+	 			and DATE(TIME_START) &gt;= #{queryDateBegin}
+	 		</if>
+	 		<if test="queryDateEnd != null">
+	 			and DATE(TIME_END) &lt;= #{queryDateEnd}
+	 		</if> -->
+	</sql>
+
+	<select id="findAll" resultType="com.framing.pojo.Farm_ycjk_scgc">
+		select * from farm_ycjk_scgc order by czsj desc
+	</select>
+	
+	<select id="loginIn" resultType="com.framing.pojo.Farm_ycjk_scgc" resultMap="Farm_ycjk_scgc">
+			select 
+				<include refid="columns_Farm_ycjk_scgc" />
+			 from Farm_ycjk_scgc
+			 where scgcms = #{scgcms}
+			 and bzxx = #{bzxx}
+			 and czsj = #{czsj}
+			 and czry = #{czry}
+	</select>
+
+	<select id="getFarm_ycjk_scgc" resultType="com.framing.pojo.Farm_ycjk_scgc" resultMap="Farm_ycjk_scgc">
+			select 
+				<include refid="columns_Farm_ycjk_scgc" />
+			 from Farm_ycjk_scgc
+			<where>
+			<include refid="Farm_ycjk_scgc_where" />
+		</where>
+		order by czsj desc
+	</select>
+	
+	<select id="getOneFarm_ycjk_scgc" resultType="com.framing.pojo.Farm_ycjk_scgc"
+		resultMap="Farm_ycjk_scgc" parameterType="integer">
+			select 
+			<include refid="columns_Farm_ycjk_scgc" />
+			 from Farm_ycjk_scgc
+			  where sid=#{0}
+	</select>	
+	
+	<!-- 新增DOC_BASE_INFO 信息 -->
+	<insert id="addFarm_ycjk_scgc" parameterType="com.framing.pojo.Farm_ycjk_scgc">
+		INSERT INTO Farm_ycjk_scgc <include refid="columns_insertFarm_ycjk_scgc"/>
+		VALUES <include refid="columns_Farm_ycjk_scgcParams"/>
+	</insert>
+	
+		<!-- 修改DOC_BASE_INFO 信息 -->
+	<update id="updateFarm_ycjk_scgc" parameterType="com.framing.pojo.Farm_ycjk_scgc">
+		<!-- UPDATE Farm_ycjk_scgc
+		SET    <include refid="Farm_ycjk_scgc_update" />
+		WHERE  sid=#{sid} -->
+		update Farm_ycjk_scgc
+		<set>
+			<if test="scgcms !=null and scgcms!='' ">
+				scgcms=#{scgcms},
+			</if>
+			<if test="bzxx !=null and bzxx !='' ">
+				bzxx=#{bzxx},
+			</if>
+			<if test="czsj !=null and czsj !='' ">
+				czsj=#{czsj},
+			</if>
+			<if test="czry !=null and czry !='' ">
+				czry=#{czry}
+			</if>
+
+		</set>
+		where sid = #{sid}
+	</update>
+	
+	<delete id="deleteFarm_ycjk_scgc" parameterType="integer">
+			delete  from Farm_ycjk_scgc where sid=#{0}
+	</delete>
+</mapper> 

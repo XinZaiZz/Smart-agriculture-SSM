@@ -1,0 +1,130 @@
+@charset "utf-8";
+/**
+ * JHtml Responsive v4.0.0 jhtml-responsive.min.css
+ * 
+ * Licensed under the GPL: http://www.liyong.com.cn/licenses.txt
+ * 
+ * Copyright 2010 liyong [ 343639986@qq.com ]
+ * 
+ * ----------------------------------------------------------------------------
+ * 
+ */
+@media print{body{background-color:#fff!important;}
+.hidden-print,.jhtml-bar,.jhtml-footer,.jhtml-sidebar-wrapper,.theme-panel{display:none;}
+.no-jhtml-break{jhtml-break-after:avoid;}
+.jhtml-center{margin:0!important;padding:0!important;}
+.jhtml-content{margin:0!important;padding:0 20px 20px!important;min-height:300px!important;}
+.jhtml-content>.portlet,.jhtml-content>.portlet>.portlet-body{margin:0;padding:0;}
+}
+
+/** ------------------------------min------------------------------ */
+@media(min-width :992px){
+.jhtml-sidebar-closed .jhtml-header.navbar .jhtml-logo{margin-right:10px;margin-left:5px;padding:0;width:55px}
+.jhtml-sidebar-closed .jhtml-header.navbar .jhtml-logo .logo-default{display:none}
+.jhtml-header.navbar .search-form.search-form-expanded{width:175px}
+.jhtml-header.navbar .search-form.search-form-expanded .input-group .form-control{padding:6px 12px;text-indent:0}
+.jhtml-header.navbar .search-form.search-form-expanded .input-group .form-control:hover{cursor:text}
+.jhtml-sidebar{position:relative;float:left;margin-right:-100%;width:235px}
+.jhtml-full-width .jhtml-sidebar{display:none!important}
+.jhtml-sidebar.navbar-collapse{max-height:none!important}
+.jhtml-sidebar-fixed .jhtml-sidebar{position:fixed!important;margin-left:0}
+.jhtml-sidebar-fixed .jhtml-sidebar-menu>li:last-child{margin-bottom:20px!important}
+.jhtml-sidebar-fixed .jhtml-sidebar-menu .sub-menu{height:auto!important}
+.jhtml-sidebar-closed .jhtml-sidebar,.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed{width:54px!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li.heading>h3{display:none}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li.heading:hover{box-shadow:none!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li.open>.sub-menu,.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li>.sub-menu{display:none!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover{position:relative!important;z-index:999;display:block!important;width:289px!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>a{-webkit-border-radius:0 4px 0 0;-moz-border-radius:0 4px 0 0;border-radius:0 4px 0 0;text-align:left;-ms-border-radius:0 4px 0 0;-o-border-radius:0 4px 0 0;box-shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.18);}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>a>i{display:inline-block;margin-right:5px}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>a>.title{display:inline!important;padding-left:20px}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>a>.badge{display:block!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>a>.selected{display:none}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>.sub-menu{position:absolute;top:100%;left:55px;z-index:2000;display:block!important;margin-top:0;width:234px;-webkit-border-radius:0 0 4px 4px;-moz-border-radius:0 0 4px 4px;border-radius:0 0 4px 4px;-ms-border-radius:0 0 4px 4px;-o-border-radius:0 0 4px 4px;box-shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.18);}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>.sub-menu>li>a{padding-left:15px!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>.sub-menu>li>.sub-menu>li>a{padding-left:30px!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li:not(.heading):hover>.sub-menu>li>.sub-menu>li>.sub-menu>li>a{padding-left:45px!important}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li>a{min-height:45px}
+.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li>a>.arrow,.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li>a>.badge,.jhtml-sidebar-closed .jhtml-sidebar .jhtml-sidebar-menu.jhtml-sidebar-menu-closed>li>a>.title{display:none!important}
+.jhtml-sidebar-closed.jhtml-sidebar-fixed .jhtml-sidebar:hover{z-index:999;display:block;width:235px!important}
+.jhtml-sidebar-closed.jhtml-sidebar-fixed .jhtml-sidebar:hover .jhtml-sidebar-menu{width:235px!important}
+.jhtml-sidebar-closed.jhtml-sidebar-fixed .jhtml-sidebar:hover .jhtml-sidebar-menu .selected{display:none!important}
+.jhtml-sidebar-closed.jhtml-sidebar-hide .jhtml-sidebar{display:none!important}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li .sub-menu{position:absolute;z-index:2000;display:none;width:234px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li .sub-menu>li>a{margin:3px}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li.active .sub-menu,.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li.open .sub-menu{display:none!important}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li a>.arrow{display:none}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li:hover>a>.arrow{position:absolute;right:0;float:right;display:block;margin-top:-20px;width:0;height:0;border-style:solid;border-top:12px double transparent;border-bottom:12px double transparent;border-left:0;background:0 0}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li:hover>a>.arrow:after,.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li:hover>a>.arrow:before{display:none}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu li:hover>.sub-menu{display:inline-block!important}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu>li:hover>a>.arrow{right:-1px;z-index:1;margin-top:-20px}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu>li:hover>.sub-menu{margin-top:-50px;margin-left:236px}
+.jhtml-sidebar-closed .jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu>li:hover>.sub-menu{margin-left:0}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu>li:hover>.sub-menu>li .sub-menu{margin-top:-44px!important;margin-left:234px}
+.jhtml-sidebar-menu.jhtml-sidebar-menu-hover-submenu>li:hover>.sub-menu>li .sub-menu>li>a{padding-right:10px;padding-left:10px}
+.jhtml-content-wrapper{float:left;width:100%}
+.jhtml-content{margin-left:242px;padding:0}
+.jhtml-content.no-min-height{min-height:auto}
+.jhtml-sidebar-closed .jhtml-content{margin-left:61px!important}
+.jhtml-full-width .jhtml-content,.jhtml-sidebar-closed.jhtml-sidebar-hide .jhtml-content{margin-left:0!important}
+.jhtml-footer-fixed .jhtml-footer{position:fixed;right:0;bottom:0;left:0;z-index:999}
+}
+
+/** ------------------------------max------------------------------ */
+@media(max-width :991px){
+.jhtml-header.navbar{position:relative;clear:both;margin:0;padding:0}
+.jhtml-header.navbar .jhtml-logo{padding:0 15px 0 10px;width:auto}
+.jhtml-header.navbar .jhtml-logo img{margin-left:4px!important}
+.jhtml-header.navbar .menu-toggler.sidebar-toggler{display:none!important}
+.jhtml-header.navbar .menu-toggler.responsive-toggler{display:inline-block}
+.jhtml-header.navbar .search-form{margin-left:0}
+.jhtml-header.navbar .search-form.open{position:absolute;right:10px;left:10px;z-index:3;margin:24px 0 0;width:auto!important}
+.jhtml-header.navbar .jhtml-header-inner.container{margin:0!important;padding:0!important;width:100%;max-width:none!important}
+.jhtml-header.navbar .top-menu .navbar-nav{display:inline-block;margin:0 10px 0 0}
+.jhtml-header.navbar .top-menu .navbar-nav>li{float:left}
+.jhtml-header.navbar .top-menu .navbar-nav .nav li.dropdown i{position:relative;top:1px;right:0;display:inline-block}
+.jhtml-header.navbar .top-menu .navbar-nav .open .dropdown-menu{position:absolute}
+.jhtml-header-fixed.jhtml-header-fixed-mobile .navbar-fixed-top{position:fixed}
+.jhtml-center{margin:0!important;padding:10px 10px 0}
+.jhtml-header-fixed.jhtml-header-fixed-mobile .jhtml-center{margin-top:75px!important}
+.jhtml-sidebar .selected,.jhtml-sidebar.navbar-collapse.collapse{display:none!important}
+.jhtml-sidebar,.jhtml-sidebar.navbar-collapse.in{margin:5px 0;border-top:0!important}
+.jhtml-sidebar.navbar-collapse{max-height:none}
+.jhtml-sidebar.navbar-collapse.in{position:relative;display:block!important;overflow:hidden!important;overflow-y:auto!important}
+.jhtml-sidebar.navbar-collapse.navbar-no-scroll{max-height:none!important}
+.jhtml-sidebar .mega-menu-responsive-content{padding:10px 18px 10px 45px}
+.jhtml-full-width .jhtml-sidebar-menu{display:block}
+}
+@media(max-width :767px){
+.jhtml-header.navbar{padding:0}
+.jhtml-header.navbar .jhtml-logo{width:auto}
+.jhtml-header.navbar .search-form{float:right;margin-top:-53px;margin-right:57px}
+.jhtml-header.navbar .search-form.open{margin:-52px 0 0}
+.jhtml-header.navbar .jhtml-top{clear:both;display:block;padding:0;width:100%}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-language .dropdown-toggle .langname,.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle .username.username-hide-on-mobile,.jhtml-header.navbar .top-menu .navbar-nav>li.separator{display:none}
+.jhtml-header.navbar .top-menu{float:right;margin:1px 0 0;padding:0}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown>.dropdown-toggle{padding:24px 6px 15px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown.open .dropdown-toggle{background:0 0!important}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown>.dropdown-toggle:hover{background:0 0!important}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown>.dropdown-toggle>.badge{margin:-6px 0 0;padding:3px 6px;height:18px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-extended>.dropdown-menu{width:245px;max-width:245px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-notification .dropdown-menu{margin-right:-185px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-notification .dropdown-menu:after,.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-notification .dropdown-menu:before{margin-right:195px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-inbox .dropdown-menu{margin-right:-130px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-inbox .dropdown-menu:after,.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-inbox .dropdown-menu:before{margin-right:140px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-tasks .dropdown-menu{margin-right:-65px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-tasks .dropdown-menu:after,.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-tasks .dropdown-menu:before{margin-right:75px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle{padding:24px 12px 15px}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle img{margin-left:0}
+.jhtml-header.navbar .top-menu .navbar-nav>li.dropdown-language .dropdown-toggle{padding:28px 6px 26px}
+.jhtml-header-fixed.jhtml-header-fixed-mobile .jhtml-sidebar,.jhtml-header-fixed.jhtml-header-fixed-mobile .jhtml-sidebar.in{margin-top:10px!important}
+.jhtml-content{padding:0!important}
+.jhtml-content .jhtml-title{margin-bottom:15px;font-size:20px}
+.jhtml-content .jhtml-title small{padding-top:3px;font-size:13px}
+}
+@media(max-width :480px){
+.jhtml-content .jhtml-title small{clear:both;display:block}
+.jhtml-header-fixed .pace .pace-progress{top:150px}
+.jhtml-header-fixed .pace .pace-activity{top:304px;right:15px}
+.jhtml-header-fixed.jhtml-header-fixed-mobile .jhtml-center{margin-top:150px!important}
+}
